@@ -1,28 +1,15 @@
-# devops-django-react-task
+# HNGI9 STAGE 2 PROJECT - DOCKERIZE A PYTHON/DJANGO (BACKEND) AND JAVASCRIPT/REACTJS 9FRONTEND) APPLICATION
 
-## Backend development workflow
+### Application Endpoint (Server IP) 
+[Public IP](http://3.83.255.123/) OR
+[Public IP DNS](ec2-3-83-255-123.compute-1.amazonaws.com)
 
-```json
-virtualenv env
-source env/bin/activate
-pip install -r requirements.txt
-python manage.py runserver
-```
 
-## Frontend development workflow
+### Docker Images
+1. [Frontend](https://hub.docker.com/repository/docker/godchosen/hngi9-javascript-react-app)
 
-You are to update your name in ./frontend/components/App.js
+2. [Backend](https://hub.docker.com/repository/docker/godchosen/hngi9-python-django-app)
 
-```json
-npm i
-npm start
-```
 
-## For deploying
-
-```json
-npm run build
-```
-
-It should look like this if successful
-<img width="1440" alt="Screen Shot 2022-11-02 at 19 30 22" src="https://user-images.githubusercontent.com/66765302/199572589-43bd05b7-95a6-455c-bc25-3cd437c95339.png">
+**Dockerized Application**
+![Dockerized Application](screenshots/nginx-reverse-proxy-working.PNG) 
