@@ -66,7 +66,7 @@ python manage.py runserver
 ![Working Backend Server](screenshots/working-backend-server.PNG)
 
 
-## Create Dockerfiles for backend and frontend
+## Create Dockerfiles for backend and frontend and push the images to DockerHub
 ### Backend
 - Create Dockerfile
 ```
@@ -175,3 +175,38 @@ If everything is done well, the we should be able to see the image below:
 docker push godchosen/hngi9-javascript-react-app:v1 
 ```
 
+## Create a docker-compose file that can spin up the images above with a single command
+- Create the file `docker-compose.yml` in the project root directory
+```
+touch docker-compose.yml
+```
+    
+- Paste the below entry into the file above and save it
+```
+version: '3.7'
+
+services:
+  frontend:
+    image: godchosen/hngi9-javascript-react-app:v1
+    ports:
+      - 3000:3000
+
+  backend:
+    image: godchosen/hngi9-python-django-app:v2
+    ports:
+      - 8000:8000
+```
+    
+- Test the docker-compose file configuration
+```
+# run the containers using the `docker-compose.yml` file
+docker-compose up
+    
+# check that it works using the command below
+curl localhost:3000
+curl localhost:8000
+```
+
+***Docker Compose Working***
+![Docker Compose Working](screenshots/docker-compose-working.PNG) 
+    
