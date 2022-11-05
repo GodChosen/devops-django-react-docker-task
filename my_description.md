@@ -210,3 +210,38 @@ curl localhost:8000
 ***Docker Compose Working***
 ![Docker Compose Working](screenshots/docker-compose-working.PNG) 
     
+## Configure nginx reverse-proxy to point port 3000 to the my ec2 server's IP address
+To configure nginx reverse-proxy to point port 3000 to the my ec2 server's IP address, I followed the following stesp:
+- Modify the the file `/etc/nginx/sites-available/default` by commenting out the default server configuration and pasting the following into the file
+``` 
+server {
+        listen 80;
+        listen [::]:80;
+
+        server_name ec2-3-83-255-123.compute-1.amazonaws.com;
+
+        location / {
+                proxy_pass http://localhost:3000;
+        }
+}
+```
+
+- Test if the configuration has no issues
+```
+sudo nginx -t
+```
+
+- Restart the Nginx server
+```
+sudo systemctl restart server
+```
+
+- Run the frontend and backend images using the docker-compose file
+```
+docker-compose up -d
+```
+
+- Proceed to the browser and visit the server's public IP address `<ec2-server-public-IP-address>`
+
+***NGINX Reverse-proxy Working***
+![NGINX Reverse-proxy Working](screenshots/nginx-reverse-proxy-working.PNG) 
