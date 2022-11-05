@@ -3,7 +3,11 @@ version: '3.7'
 services:
   frontend:
     image: godchosen/hngi9-javascript-react-app:v1
+    ports:
+      - 3000:3000
 
   backend:
     image: godchosen/hngi9-python-django-app:v2
+    ports:
+      - 8000:8000
 
